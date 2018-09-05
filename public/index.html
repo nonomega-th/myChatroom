@@ -8,24 +8,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Page styling -->
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="signin.css"/>
   </head>
   
   <body>
-    <div class="container">
+    <div class="container-fluid wrapper">
       <div id="userFormArea">
-          <div class="text-center">
               <form id="userForm" class="form-signin">
                 <img class="mb-4" src="img/mainicon.png" alt="" width="128" height="128">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <label for="username" class="sr-only">Username</label><br />
                 <input id="username" class="form-control" placeholder="Username" required autofocus>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 10px">Login</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+                <p class="mb-3 text-muted">&copy; 2018-2019</p>
               </form>
-            </div>
       </div>
-
-      <div id="messageFormArea" class="row">
+      <div id="messageFormArea" class="row-fluid">
           <div class="col-md-4">
               <div class="well">
                 <h5>Online Users</h5>
@@ -44,7 +42,7 @@
                     </div>
                 </form>
           </div>
-        </div>
+      </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -2,29 +2,61 @@
 <html>
   <head>
     <title>My Chat Room</title>
-  </head>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-  $(function () {
-    var socket = io();
-    $('form').submit(function(){
-      var messagestemp = $('#messagesinput').val()
-      if ($.trim(messagestemp) != '') {
-        socket.emit('chatpipe', messagestemp);
+     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      body{
+        margin-top: 30px 
       }
-      $('#messagesinput').val('');
-      return false;
-    });
-    socket.on('chatpipe', function(msg){
-      $('#messagesroom').append($('<li>').text(msg));
-    });
-  });
-</script>
+    </style>
+  </head>
+  
   <body>
-    <ul id="messagesroom"></ul>
-    <form action="">
-      <input id="messagesinput" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="well">
+                <h3>Online Users</h3>
+                <ul class="list-group" id="users"></ul>
+              </div>
+          </div>
+          <div class="col-md-8">
+                <div class="chat" id="chat"></div>
+
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label>Enter Message</label>
+                        <textarea class="form-control" id="messagesinput"></textarea>
+                        <br />
+                        <input type="submit" class="btn btn-primary" value="Send Message" />
+                    </div>
+                </form>
+          </div>
+        </div>
+    </div>
+    <script>
+      $(function () {
+        var socket = io.connect();
+        var messageForm = $('#messageForm');
+        var message = $('#messagesinput');
+        var chat = $('#chat');
+
+        messageForm.submit(function(event){
+          event.preventDefault();
+          var messagestemp = message.val()
+          if ($.trim(messagestemp) != '') {
+            socket.emit('chatpipe', messagestemp);
+          }
+          $('#messagesinput').val('');
+
+          
+        });
+        socket.on('newMessage', function(msg){
+            chat.append($('<div class="well">' + msg + '</div>').text(msg));
+          });
+      });
+    </script>
+
   </body>
 </html>

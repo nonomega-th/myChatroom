@@ -1,3 +1,6 @@
+
+
+var express = require('express')
 var app = require('express')();
 var server = require('http').Server(app);
 var socketio = require('socket.io')(server);
@@ -8,9 +11,7 @@ connections = [];
 server.listen(port, function(){
   console.log('listening on *:'+port);
 });
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+app.use(express.static('public'));
 
 socketio.on('connection', function(socket){
 	connections.push(socket);

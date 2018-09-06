@@ -29,13 +29,14 @@ $(function () {
     event.preventDefault();
   });
   socket.on('newMessage', function(payload){
-    var element = document.getElementById("chat");
-    element.scrollTop = element.scrollHeight;
+  
     if (payload.user == me) {
       chat.append(genmybubble(payload));
     }else{
       chat.append(genyourbubble(payload));
     }
+    var element = document.getElementById("chat");
+    element.scrollTop = element.scrollHeight;
     // chat.append('<p class="bubble you"><strong>' +payload.user+ ': </strong>' + payload.message + '</p>');
   });
 

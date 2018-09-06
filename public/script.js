@@ -66,8 +66,8 @@ $(function () {
   });
 });
 function genmybubble(payload){
-  return '<li class="bubble me">'+ payload.message + '</li>';
+  return '<div class="bubble me">'+ payload.message + '</div>';
 }
 function genyourbubble(payload){
-  return '<li class="yourusername"><strong>' +payload.user+ '</strong></li><li class="bubble you">' + payload.message + '</li>';
+  return '<div class="yourusername"><strong>' +payload.user+ '</strong></div><div class="bubble you">' + payload.message + '</div>';
 }

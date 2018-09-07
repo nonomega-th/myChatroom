@@ -11,8 +11,9 @@ $(function () {
 
   var users = $('#users');
   var username = $('#username');
-  var me;
+  var myUsername;
 
+  // Area for Chat room function
   message.keypress(function (event) {
     if(event.which == 13 && !event.shiftKey) {        
       messageForm.submit();
@@ -30,26 +31,29 @@ $(function () {
   });
   socket.on('newMessage', function(payload){
   
-    if (payload.user == me) {
+    if (payload.user == myUsername) {
       chat.append(genmybubble(payload));
     }else{
       chat.append(genyourbubble(payload));
     }
     var element = document.getElementById("chat");
     element.scrollTop = element.scrollHeight;
-    // chat.append('<p class="bubble you"><strong>' +payload.user+ ': </strong>' + payload.message + '</p>');
   });
 
+  // Area for User function
   userForm.submit(function(event){
     event.preventDefault();
     var usernametemp = username.val()
     if ($.trim(usernametemp) != '') {
-      socket.emit('newUser', usernametemp, function(data){
-        if(data){
-          me = usernametemp;
+      socket.emit('newUser', usernametemp, function(confirm){
+        if(confirm){
+          myUsername=usernametemp;
           userFormArea.hide();
           messageFormArea.show();
           messagesinput.focus();
+        }else{
+          username.val('');
+          alert("Username is already taken.");
         }
       });
       username.val('');
@@ -65,6 +69,8 @@ $(function () {
     users.html(html);
   });
 });
+
+// Custom function
 function genmybubble(payload){
   return '<div class="bubble me">'+ payload.message + '</div>';
 }

@@ -1,7 +1,7 @@
 # Chat room project with NodeJS and Socket.IO
 
 ### Server 
-Install with ```npm install```
+Install with ```npm install```  
 
 Start chat room server with ```nodejs index.js```
 

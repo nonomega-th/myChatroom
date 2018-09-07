@@ -22,8 +22,8 @@
 }
 
 .people {
-    margin-left: 10px;
-    width: calc(100% - 20px);
+    margin-left: 20px;
+    width: calc(100% - 40px);
 }
 .person {
     position: relative;
@@ -130,4 +130,11 @@
 
 textarea:focus, input:focus{
     outline: none;
+}
+
+.userTop{
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 10px;
 }

@@ -34,7 +34,7 @@ socketio.on('connection', function(socket){
 	// New User
 	socket.on('newUser', function(username,callback){
 		if(users.indexOf(username) > -1){
-			console.log("[ERRO] Duplicate Username");
+			console.log("[ERROR] Duplicate Username");
 			callback(false);
 		}else{
 			callback(true);

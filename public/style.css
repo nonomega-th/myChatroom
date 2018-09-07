@@ -3,12 +3,8 @@ html, body {
     width: 100%;
 }
 .container-fluid {
-    margin: 0 auto;
+    margin: auto;
     height: 100%;
     padding: 0px 0px;
-    
     align-items: center;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }

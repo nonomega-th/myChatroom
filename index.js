@@ -17,12 +17,13 @@ socketio.on('connection', function(socket){
 
 	// Disconnect
 	socket.on('disconnect', function(data){
-		console.log('[INFO] '+socket.username + ' left out');
-		users.splice(users.indexOf(socket.username), 1);
-		updateUsernames();
+		if(socket.username != undefined){
+			console.log('[INFO] '+socket.username + ' left out');
+			users.splice(users.indexOf(socket.username), 1);
+			updateUsernames();
+		}
 		connections.splice(connections.indexOf(socket), 1);
 		console.log('[INFO] Disconnected: %s sockets connected.', connections.length);
-
 	});
 	
 	// Send Message
@@ -45,7 +46,7 @@ socketio.on('connection', function(socket){
 		}
 		
 	});
-
+	
 	function updateUsernames(){
 		socketio.emit('getUsers', users);
 	}

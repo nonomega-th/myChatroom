@@ -2,6 +2,7 @@
 
 ### Server 
 Install with ```npm install```
+
 Start chat room server with ```nodejs index.js```
 
 ### Client
